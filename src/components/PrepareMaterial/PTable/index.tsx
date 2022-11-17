@@ -1,3 +1,4 @@
+import { ColorCodeConversion } from '@/utils/utils';
 import { Table } from 'antd';
 import React, { ReactElement, useEffect } from 'react';
 
@@ -6,7 +7,7 @@ interface Props {
   onRowSelect?: (row: any) => void; //单击选中单行
   columns: any[];
   dataSource: any[];
-  record?: any; //
+  record?: API.StationInfo; //
   scroll?: any;
   pagination?: any;
 }
@@ -18,7 +19,7 @@ function PTable(props: Props): ReactElement {
    * @param dataSource
    */
   const cantFindRecord = (record: any, dataSource: any[]): boolean => {
-    return dataSource.findIndex((item) => item.id === record.id) === -1;
+    return dataSource.findIndex((item) => item.mcId === record.mcId) === -1;
   };
 
   /**
@@ -44,30 +45,28 @@ function PTable(props: Props): ReactElement {
   }, [props.dataSource]);
 
   return (
-    <Table
+    <Table<API.StationInfo>
       rowKey="id"
-      onRow={(row: any) => {
+      onRow={(row) => {
+        console.log('row', row);
+        console.log('props.record', props.record);
+
         return {
           style: {
-            backgroundColor:
-              row.id === (props.record && props.record.id)
-                ? 'rgba(111, 185, 245,0.3)'
-                : '#fff',
+            backgroundColor: row === props.record ? 'blue' : '#fff',
             color:
-              row.id === (props.record && props.record.id)
-                ? '#1890ff'
-                : 'rgba(1,0,0,0.8)',
+              row === props.record
+                ? '#fff'
+                : ColorCodeConversion(row.corlorId ?? 0),
           },
           onClick: () => {
             if (props.onRowSelect) props.onRowSelect(row);
           },
         };
       }}
-      pagination={{
-        pageSize: props.pagination ? props.pagination : 5,
-      }}
+      pagination={false}
       size="small"
-      scroll={{ x: 'max-content' }}
+      scroll={{ x: 400, y: 250 }}
       {...props}
     ></Table>
   );

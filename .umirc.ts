@@ -6,4 +6,11 @@ export default defineConfig({
   },
   routes: [{ path: '/', component: '@/pages/index' }],
   fastRefresh: {},
+  proxy: {
+    '/api': {
+      target: 'http://103.231.15.106:5000/',
+      changeOrigin: true,
+      pathRewrite: { '^': '' },
+    },
+  },
 });

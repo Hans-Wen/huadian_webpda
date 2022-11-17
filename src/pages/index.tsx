@@ -1,5 +1,7 @@
+import BenchBlanking from '@/components/BenchBlanking';
 import ConnectingMaterial from '@/components/ConnectingMaterial';
 import PrepareMaterial from '@/components/PrepareMaterial';
+import StationBlanking from '@/components/StationBlanking';
 import { Tabs } from 'antd-mobile';
 import './index.less';
 export default function HomePage() {
@@ -13,10 +15,10 @@ export default function HomePage() {
           <ConnectingMaterial />
         </Tabs.Tab>
         <Tabs.Tab title="机台下料" key="BenchBlanking">
-          机台下料
+          <BenchBlanking />
         </Tabs.Tab>
         <Tabs.Tab title="站位下料" key="StationBlanking">
-          站位下料
+          <StationBlanking />
         </Tabs.Tab>
       </Tabs>
     </>
