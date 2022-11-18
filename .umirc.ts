@@ -13,4 +13,12 @@ export default defineConfig({
       pathRewrite: { '^': '' },
     },
   },
+
+  chainWebpack: (config) => {
+    config.module
+      .rule('wav')
+      .test('/.wav$/')
+      .use('file-loader')
+      .loader('file-loader');
+  },
 });

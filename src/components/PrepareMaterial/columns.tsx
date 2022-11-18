@@ -1,96 +1,51 @@
-import { ColorCodeConversion } from '@/utils/utils';
-
 export const columns = [
   {
-    title: '序号',
-    width: 50,
+    title: 'No.',
+    width: 40,
+    align: 'center',
     dataIndex: 'id',
     key: 'id',
-    fixed: 'left',
-    render: (text: any, record: any, index: number) => {
-      return (
-        <span style={{ color: ColorCodeConversion(record.corlorId) }}>
-          {index + 1}
-        </span>
-      );
-    },
+    render: (text: any, record: API.StationInfo, index: number) => index + 1,
   },
   {
     title: '区域',
-    width: 70,
+    width: 50,
+    align: 'center',
     dataIndex: 'nLane',
     key: 'nLane',
-    render: (text: any, record: any, index: number) => {
-      return (
-        <span style={{ color: ColorCodeConversion(record.corlorId) }}>
-          {text}
-        </span>
-      );
-    },
   },
   {
     title: '站位',
-    width: 70,
+    width: 50,
+    align: 'center',
     dataIndex: 'station',
     key: 'station',
-    render: (text: any, record: any, index: number) => {
-      return (
-        <span style={{ color: ColorCodeConversion(record.corlorId) }}>
-          {text}
-        </span>
-      );
-    },
   },
   {
     title: '槽位',
-    width: 70,
+    width: 50,
+    align: 'center',
     dataIndex: 'slot',
     key: 'slot',
-    render: (text: any, record: any, index: number) => {
-      return (
-        <span style={{ color: ColorCodeConversion(record.corlorId) }}>
-          {text}
-        </span>
-      );
-    },
   },
   {
     title: '子槽位',
-    width: 70,
+    width: 60,
+    align: 'center',
     dataIndex: 'subSlot',
     key: 'subSlot',
-    render: (text: any, record: any, index: number) => {
-      return (
-        <span style={{ color: ColorCodeConversion(record.corlorId) }}>
-          {text}
-        </span>
-      );
-    },
   },
   {
     title: '料号',
     width: 150,
     dataIndex: 'compName',
     key: 'compName',
-    render: (text: any, record: any, index: number) => {
-      return (
-        <span style={{ color: ColorCodeConversion(record.corlorId) }}>
-          {text}
-        </span>
-      );
-    },
   },
   {
     title: '料盘',
-    width: 150,
+    width: 200,
     dataIndex: 'compId',
+    ellipsis: true,
     key: 'compId',
-    render: (text: any, record: any, index: number) => {
-      return (
-        <span style={{ color: ColorCodeConversion(record.corlorId) }}>
-          {text}
-        </span>
-      );
-    },
   },
 ];

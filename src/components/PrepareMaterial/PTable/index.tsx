@@ -1,7 +1,7 @@
 import { ColorCodeConversion } from '@/utils/utils';
 import { Table } from 'antd';
 import React, { ReactElement, useEffect } from 'react';
-
+import './index.less';
 interface Props {
   [key: string]: any;
   onRowSelect?: (row: any) => void; //单击选中单行
@@ -46,18 +46,21 @@ function PTable(props: Props): ReactElement {
 
   return (
     <Table<API.StationInfo>
+      rowClassName="pdaTableItem"
       rowKey="id"
       onRow={(row) => {
-        console.log('row', row);
-        console.log('props.record', props.record);
-
         return {
           style: {
-            backgroundColor: row === props.record ? 'blue' : '#fff',
-            color:
-              row === props.record
-                ? '#fff'
+            backgroundColor:
+              `${row.station}${row.slot}${row.subSlot}` ===
+              `${props.record?.station}${props.record?.slot}${props.record?.subSlot}`
+                ? '#1677ff'
                 : ColorCodeConversion(row.corlorId ?? 0),
+            color:
+              `${row.station}${row.slot}${row.subSlot}` ===
+              `${props.record?.station}${props.record?.slot}${props.record?.subSlot}`
+                ? '#fff'
+                : '#333',
           },
           onClick: () => {
             if (props.onRowSelect) props.onRowSelect(row);
