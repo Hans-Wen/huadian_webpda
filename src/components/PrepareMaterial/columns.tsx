@@ -8,7 +8,7 @@ export const columns = [
     render: (text: any, record: API.StationInfo, index: number) => index + 1,
   },
   {
-    title: '区域',
+    title: '轨道',
     width: 50,
     align: 'center',
     dataIndex: 'nLane',

@@ -6,6 +6,7 @@ export default defineConfig({
   },
   routes: [{ path: '/', component: '@/pages/index' }],
   fastRefresh: {},
+
   proxy: {
     '/api': {
       target: 'http://103.231.15.106:5000/',
@@ -14,11 +15,11 @@ export default defineConfig({
     },
   },
 
-  chainWebpack: (config) => {
-    config.module
-      .rule('wav')
-      .test('/.wav$/')
+  chainWebpack(memo) {
+    memo.module
+      .rule('media')
+      .test(/\.(wav)$/)
       .use('file-loader')
-      .loader('file-loader');
+      .loader(require.resolve('file-loader'));
   },
 });

@@ -74,6 +74,8 @@ export async function SplicingPart(
   body: API.SplicingPartBody,
   options?: { [key: string]: any },
 ) {
+  console.log('body', body);
+
   return request<API.SplicingPartResult>(`/api/Material/SplicingPart`, {
     method: 'POST',
     headers: {
